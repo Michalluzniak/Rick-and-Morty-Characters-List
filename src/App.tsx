@@ -8,9 +8,9 @@ import { Nav } from './components/molecules/Nav';
 function App() {
   return (
     <div className="App">
-      <Nav />
-
-      <SearchbarInput />
+      <Nav>
+        <SearchbarInput />
+      </Nav>
 
       <Container
         fluid

@@ -3,10 +3,15 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { atomsProps } from './types/types';
 
-export const ButtonSearch = (props: atomsProps) => {
+export const ButtonSearch = ({
+  className,
+  type,
+  variant,
+  children
+}: atomsProps) => {
   return (
-    <Button type={props.type} variant={props.variant}>
-      {props.children}
+    <Button className={className} type={type} variant={variant}>
+      {children}
     </Button>
   );
 };

@@ -6,10 +6,12 @@ import { DropdownList } from '../atoms/DropdownList';
 
 export const SearchbarInput = () => {
   return (
-    <SearchBarContainer>
-      <DropdownList />
+    <SearchBarContainer className="col-3 me-5">
+      <DropdownList variant="primary" />
       <FormControl aria-label="Text input with dropdown button" />
-      <ButtonSearch>Search</ButtonSearch>
+      <ButtonSearch variant="dark" className="border border-white ms-1">
+        Search
+      </ButtonSearch>
     </SearchBarContainer>
   );
 };
