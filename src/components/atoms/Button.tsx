@@ -1,16 +1,11 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { atomsProps } from './types/types';
 
-type ButtonProps = {
-  color: string;
-  type?: 'button' | 'submit' | 'reset' | undefined;
-  children: string | React.ReactNode;
-};
-
-export const ButtonSearch = (props: ButtonProps) => {
+export const ButtonSearch = (props: atomsProps) => {
   return (
-    <Button type={props.type} variant={props.color}>
+    <Button type={props.type} variant={props.variant}>
       {props.children}
     </Button>
   );
