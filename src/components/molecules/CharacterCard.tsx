@@ -2,21 +2,23 @@ import React, { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import { PropsContext } from '../templates/ApiUpdate';
+import Badge from 'react-bootstrap/Badge';
+import { statusColor } from '../helpers/statusColor';
 
 export const CharacterCard = () => {
   const { characters } = useContext<any>(PropsContext);
-
-  console.log(characters);
-
+  // console.log(characters);
   return (
     <>
       {characters.map((character: any, i: number) => (
-        <Col xxl={3} xl={4} lg={4} md={6} sm={6} xs={12}>
-          <Card bg="dark" className="mt-3">
-            <Card.Img variant="top" src={character.image} />
+        <Col key={character.id} xxl={3} xl={4} lg={4} md={6} sm={6} xs={12}>
+          <Card bg="dark" text="light" className="mt-3 text-center">
+            <Card.Img src={character.image} />
             <Card.Body>
               <Card.Title>{character.name}</Card.Title>
-              <Card.Text>{character.status}</Card.Text>
+              <Badge bg={statusColor(character.status)} pill>
+                {character.status}
+              </Badge>
             </Card.Body>
           </Card>
         </Col>

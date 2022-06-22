@@ -8,6 +8,7 @@ import { Nav } from './components/molecules/Nav';
 import Row from 'react-bootstrap/Row';
 import { ApiAxios } from './components/templates/ApiUpdate';
 import { CharacterCard } from './components/molecules/CharacterCard';
+import useCharacterSearch from './components/templates/CharacterSearch';
 
 function App() {
   return (
@@ -16,7 +17,6 @@ function App() {
         <Nav>
           <SearchbarInput />
         </Nav>
-
         <Container fluid="xl">
           <Row className="mt-5 p-5 justify-content-center">
             <CharacterCard />

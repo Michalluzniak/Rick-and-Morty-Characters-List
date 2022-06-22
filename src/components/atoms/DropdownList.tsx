@@ -3,8 +3,19 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { atomsProps } from './types/types';
 import { PropsContext } from '../templates/ApiUpdate';
+import { statusColor } from '../helpers/statusColor';
 
-const statusOptions = ['Any', 'Alive', 'Dead', 'Unknown'];
+type StatusOptionTypes = {
+  status: string;
+  id: number;
+};
+
+const statusOptions: StatusOptionTypes[] = [
+  { status: 'Any', id: 1 },
+  { status: 'Alive', id: 2 },
+  { status: 'Dead', id: 3 },
+  { status: 'Unknown', id: 4 }
+];
 
 export const DropdownList = ({ variant }: atomsProps) => {
   const [characterStatus, setCharacterStatus] = useState<string>('Any');
@@ -16,14 +27,17 @@ export const DropdownList = ({ variant }: atomsProps) => {
   }
 
   return (
-    <DropdownButton variant={variant} title={characterStatus}>
-      {statusOptions.map((option, i) => (
+    <DropdownButton
+      variant={statusColor(characterStatus.toLowerCase())}
+      title={characterStatus}
+    >
+      {statusOptions.map((option) => (
         <Dropdown.Item
-          key={i}
+          key={option.id}
           onClick={(e) => handleOnClick(e)}
           className="dropdown-menu-dark"
         >
-          {option}
+          {option.status}
         </Dropdown.Item>
       ))}
     </DropdownButton>
