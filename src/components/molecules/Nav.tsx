@@ -4,7 +4,12 @@ import logo from '../../ricklogo.svg';
 
 export const Nav = (props: { children: JSX.Element | React.ReactNode }) => {
   return (
-    <Navbar bg="dark" variant="dark" className="row justify-content-md-between">
+    <Navbar
+      fixed="top"
+      bg="dark"
+      variant="dark"
+      className="row justify-content-md-between"
+    >
       <Navbar.Brand className="col-2">
         <img
           src={logo}
