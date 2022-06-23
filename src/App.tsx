@@ -4,23 +4,20 @@ import './App.css';
 
 import Container from 'react-bootstrap/Container';
 import { SearchbarInput } from './components/molecules/SearchbarInput';
-import { Nav } from './components/molecules/Nav';
-import Row from 'react-bootstrap/Row';
+import { Nav } from './components/organisms/Nav';
 import { ApiAxios } from './components/templates/ApiUpdate';
 import { CharacterCard } from './components/molecules/CharacterCard';
-import useCharacterSearch from './components/templates/CharacterSearch';
+import { RowElement } from './components/atoms/RowElement';
 
 function App() {
   return (
     <div className="App">
       <ApiAxios>
-        <Nav>
-          <SearchbarInput />
-        </Nav>
+        <Nav />
         <Container fluid="xl">
-          <Row className="mt-5 p-5 justify-content-center">
+          <RowElement>
             <CharacterCard />
-          </Row>
+          </RowElement>
         </Container>
       </ApiAxios>
     </div>

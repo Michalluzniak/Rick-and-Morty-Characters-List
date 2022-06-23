@@ -1,8 +1,9 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../ricklogo.svg';
+import { SearchbarInput } from '../molecules/SearchbarInput';
 
-export const Nav = (props: { children: JSX.Element | React.ReactNode }) => {
+export const Nav = (props: { children?: JSX.Element | React.ReactNode }) => {
   return (
     <Navbar
       fixed="top"
@@ -21,6 +22,7 @@ export const Nav = (props: { children: JSX.Element | React.ReactNode }) => {
         Rick and Morty Characters List
       </Navbar.Brand>
       {props.children}
+      <SearchbarInput />
     </Navbar>
   );
 };

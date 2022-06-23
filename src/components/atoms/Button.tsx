@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { atomsProps } from './types/types';
 
-export const ButtonSearch = ({
+export const ButtonTop = ({
   className,
   type,
   variant,
