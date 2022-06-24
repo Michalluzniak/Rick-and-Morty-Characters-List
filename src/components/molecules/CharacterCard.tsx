@@ -6,21 +6,21 @@ import Badge from 'react-bootstrap/Badge';
 import { statusColor } from '../helpers/statusColor';
 
 export const CharacterCard = () => {
-  const { characters, setPage, loading, setIsScrolling } =
+  const { characters, setPage, loading, setIsScrolling, isEnd } =
     useContext<any>(PropsContext);
 
   const observer: any = useRef();
 
   const lastElement = useCallback(
     (node: any) => {
-      if (loading) return;
-      console.log(node);
+      if (loading || isEnd) return;
+      // console.log(node);
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting) {
             setIsScrolling(true);
-            console.log('visible');
+            // console.log('visible');
 
             setPage((prev: any) => prev + 1);
           }
@@ -29,7 +29,7 @@ export const CharacterCard = () => {
       );
       if (node) observer.current.observe(node);
     },
-    [loading, setPage]
+    [loading, setPage, setIsScrolling, isEnd]
   );
 
   return (

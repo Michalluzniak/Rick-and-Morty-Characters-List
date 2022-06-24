@@ -1,9 +1,6 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import Container from 'react-bootstrap/Container';
-import { SearchbarInput } from './components/molecules/SearchbarInput';
 import { Nav } from './components/organisms/Nav';
 import { ApiAxios } from './components/templates/ApiUpdate';
 import { CharacterCard } from './components/molecules/CharacterCard';

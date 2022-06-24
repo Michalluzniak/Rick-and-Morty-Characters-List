@@ -13,15 +13,15 @@ export const PropsContext = React.createContext({});
 
 export function ApiAxios({ children }: ApiProps) {
   //API STATES for every component
+
   const [characters, setCharacters] = useState<ApiObj[]>([]);
   const [page, setPage] = useState(1);
   const [name, setName] = useState('');
   const [status, setStatus] = useState('');
-  const [loading, setLoading] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(true);
+  // const [isEmpty, setIsEmpty] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
-  // const [isScrolling, setIsScrolling] = useState(false);
 
   // useCharacterSearch({ page, name, status, setCharacters, setLoading });
 
@@ -30,9 +30,10 @@ export function ApiAxios({ children }: ApiProps) {
   useEffect(() => {
     let cancel: any;
     setLoading(true);
+
     axios
       .get(
-        ' https://deelay.me/2000/https://rickandmortyapi.com/api/character/',
+        ' https://deelay.me/1000/https://rickandmortyapi.com/api/character/',
         {
           cancelToken: new axios.CancelToken((c) => (cancel = c)),
           params: {
@@ -45,27 +46,28 @@ export function ApiAxios({ children }: ApiProps) {
       .then((res) => {
         if (isScrolling) {
           setCharacters((prevResult) => [...prevResult, ...res.data.results]);
+          console.log(res.data.results);
+          setIsEnd(!res.data.info.next);
+
           setLoading(false);
-          setIsEmpty(false);
         } else {
           setCharacters(res.data.results);
           window.scrollTo(0, 0);
+          console.log(res.data.results);
+          setIsEnd(!res.data.info.next);
+
           setLoading(false);
-          // console.log(res.data);
-          setIsEmpty(false);
-          setIsEnd(false);
         }
       })
       .catch((err) => {
-        setIsEnd(true);
-        setLoading(false);
         if (axios.isCancel(err)) return console.log(err);
       });
 
     return () => {
       cancel();
     };
-  }, [name, page, status]);
+  }, [name, page, status, isScrolling]);
+  // console.log(loading);
 
   return (
     <PropsContext.Provider
@@ -76,7 +78,7 @@ export function ApiAxios({ children }: ApiProps) {
         characters,
         loading,
         setIsScrolling,
-        isEmpty,
+        // isEmpty,
         isEnd
       }}
     >
