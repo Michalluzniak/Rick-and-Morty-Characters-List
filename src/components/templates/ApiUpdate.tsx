@@ -23,13 +23,12 @@ export function ApiAxios({ children }: ApiProps) {
   const [loading, setLoading] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
 
-  // useCharacterSearch({ page, name, status, setCharacters, setLoading });
-
   // https://deelay.me/2000/
 
   useEffect(() => {
     let cancel: any;
     setLoading(true);
+    console.log(characters, 'before call');
 
     axios
       .get(
@@ -48,11 +47,12 @@ export function ApiAxios({ children }: ApiProps) {
           setCharacters((prevResult) => [...prevResult, ...res.data.results]);
           console.log(res.data.results);
           setIsEnd(!res.data.info.next);
+          console.log(characters, 'after call');
 
           setLoading(false);
         } else {
           setCharacters(res.data.results);
-          window.scrollTo(0, 0);
+          // window.scrollTo(0, 0);
           console.log(res.data.results);
           setIsEnd(!res.data.info.next);
 
@@ -76,10 +76,12 @@ export function ApiAxios({ children }: ApiProps) {
         setPage,
         setStatus,
         characters,
+        setCharacters,
         loading,
         setIsScrolling,
         // isEmpty,
-        isEnd
+        isEnd,
+        page
       }}
     >
       {children}

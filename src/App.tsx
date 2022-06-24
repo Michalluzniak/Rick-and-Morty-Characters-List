@@ -3,8 +3,8 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import { Nav } from './components/organisms/Nav';
 import { ApiAxios } from './components/templates/ApiUpdate';
-import { CharacterCard } from './components/molecules/CharacterCard';
-import { RowElement } from './components/atoms/RowElement';
+
+import { CharactersBlock } from './components/organisms/CharactersBlock';
 
 function App() {
   return (
@@ -12,9 +12,7 @@ function App() {
       <ApiAxios>
         <Nav />
         <Container fluid="xl">
-          <RowElement>
-            <CharacterCard />
-          </RowElement>
+          <CharactersBlock />
         </Container>
       </ApiAxios>
     </div>

@@ -19,10 +19,13 @@ const statusOptions: StatusOptionTypes[] = [
 
 export const DropdownList = ({ variant }: atomsProps) => {
   const [characterStatus, setCharacterStatus] = useState<string>('Any');
-  const { setStatus, setPage, setIsScrolling } = useContext<any>(PropsContext);
+  const { setStatus, setPage, setIsScrolling, setCharacters } =
+    useContext<any>(PropsContext);
 
   function handleOnClick(e: any) {
     setCharacterStatus(e.target.textContent);
+    setCharacters([]);
+
     setStatus(e.target.textContent === 'Any' ? '' : e.target.textContent);
     setIsScrolling(false);
     setPage(1);
