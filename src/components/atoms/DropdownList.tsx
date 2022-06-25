@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { atomsProps } from './types/types';
 import { PropsContext } from '../templates/ApiUpdate';
 import { statusColor } from '../helpers/statusColor';
 
@@ -17,7 +16,7 @@ const statusOptions: StatusOptionTypes[] = [
   { status: 'Unknown', id: 4 }
 ];
 
-export const DropdownList = ({ variant }: atomsProps) => {
+export const DropdownList = () => {
   const [characterStatus, setCharacterStatus] = useState<string>('Any');
   const { setStatus, setPage, setCharacters } = useContext<any>(PropsContext);
 
@@ -27,7 +26,6 @@ export const DropdownList = ({ variant }: atomsProps) => {
     setStatus(e.target.textContent === 'Any' ? '' : e.target.textContent);
     setPage(1);
   }
-
   return (
     <DropdownButton
       variant={statusColor(characterStatus.toLowerCase())}

@@ -6,10 +6,22 @@ interface ApiObj {
   id: number;
 }
 interface ApiProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-export const PropsContext = React.createContext({});
+interface ContextTypes {
+  setName?: any;
+  setPage?: any;
+  setStatus?: any;
+  characters?: any;
+  setCharacters?: any;
+  loading?: any;
+  // isEmpty,
+  isEnd?: any;
+  page?: any;
+}
+
+export const PropsContext = React.createContext<ContextTypes>({});
 
 export function ApiData({ children }: ApiProps) {
   //API STATES for every component
