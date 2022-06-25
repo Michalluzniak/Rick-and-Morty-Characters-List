@@ -5,14 +5,12 @@ import { DropdownList } from '../atoms/DropdownList';
 import { PropsContext } from '../templates/ApiUpdate';
 
 export const SearchbarInput = () => {
-  const { setName, setPage, setIsScrolling, setCharacters } =
-    useContext<any>(PropsContext);
+  const { setName, setPage, setCharacters } = useContext<any>(PropsContext);
 
   const handleOnchange = (e: any) => {
     console.log(e.target.value);
     setCharacters([]);
     setName(e.target.value);
-    setIsScrolling(false);
     setPage(1);
   };
 

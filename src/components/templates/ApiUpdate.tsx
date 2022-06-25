@@ -11,14 +11,14 @@ interface ApiProps {
 
 export const PropsContext = React.createContext({});
 
-export function ApiAxios({ children }: ApiProps) {
+export function ApiData({ children }: ApiProps) {
   //API STATES for every component
 
   const [characters, setCharacters] = useState<ApiObj[]>([]);
   const [page, setPage] = useState(1);
   const [name, setName] = useState('');
   const [status, setStatus] = useState('');
-  const [isScrolling, setIsScrolling] = useState(false);
+
   // const [isEmpty, setIsEmpty] = useState(true);
   const [loading, setLoading] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
@@ -28,11 +28,10 @@ export function ApiAxios({ children }: ApiProps) {
   useEffect(() => {
     let cancel: any;
     setLoading(true);
-    console.log(characters, 'before call');
 
     axios
       .get(
-        ' https://deelay.me/1000/https://rickandmortyapi.com/api/character/',
+        ' https://deelay.me/2000/https://rickandmortyapi.com/api/character/',
         {
           cancelToken: new axios.CancelToken((c) => (cancel = c)),
           params: {
@@ -43,17 +42,14 @@ export function ApiAxios({ children }: ApiProps) {
         }
       )
       .then((res) => {
-        if (isScrolling) {
+        if (page !== 1) {
           setCharacters((prevResult) => [...prevResult, ...res.data.results]);
-          console.log(res.data.results);
-          setIsEnd(!res.data.info.next);
-          console.log(characters, 'after call');
-
+          console.log(res.data);
           setLoading(false);
         } else {
           setCharacters(res.data.results);
-          // window.scrollTo(0, 0);
-          console.log(res.data.results);
+          console.log(res.data);
+
           setIsEnd(!res.data.info.next);
 
           setLoading(false);
@@ -66,8 +62,7 @@ export function ApiAxios({ children }: ApiProps) {
     return () => {
       cancel();
     };
-  }, [name, page, status, isScrolling]);
-  // console.log(loading);
+  }, [name, page, status]);
 
   return (
     <PropsContext.Provider
@@ -78,7 +73,6 @@ export function ApiAxios({ children }: ApiProps) {
         characters,
         setCharacters,
         loading,
-        setIsScrolling,
         // isEmpty,
         isEnd,
         page

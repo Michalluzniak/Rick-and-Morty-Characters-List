@@ -2,19 +2,23 @@ import './App.css';
 
 import Container from 'react-bootstrap/Container';
 import { Nav } from './components/organisms/Nav';
-import { ApiAxios } from './components/templates/ApiUpdate';
+import { ApiData } from './components/templates/ApiUpdate';
 
 import { CharactersBlock } from './components/organisms/CharactersBlock';
+import { LoadingCircle } from './components/atoms/LoadingCircle';
+import { IsEndMessage } from './components/atoms/IsEndMessage';
 
 function App() {
   return (
     <div className="App">
-      <ApiAxios>
+      <ApiData>
         <Nav />
         <Container fluid="xl">
           <CharactersBlock />
+          <LoadingCircle />
+          <IsEndMessage />
         </Container>
-      </ApiAxios>
+      </ApiData>
     </div>
   );
 }
