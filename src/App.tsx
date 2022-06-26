@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <ApiData>
         <Nav />
-        <Container fluid="xl">
+        <Container fluid="xxl">
           <CharactersBlock />
         </Container>
       </ApiData>
