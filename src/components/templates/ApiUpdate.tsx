@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+//Axios
 import axios from 'axios';
+//Helpers
 import { IsContextTypes } from '../helpers/interfaces';
 import { IsCharacter } from '../helpers/interfaces';
 
