@@ -1,15 +1,13 @@
 import { useContext } from 'react';
-
-import { PropsContext } from '../templates/ApiUpdate';
+//Bootstrap components
 import Spinner from 'react-bootstrap/Spinner';
-
-interface LoadingTypes {
-  loading?: boolean | null;
-  page?: number;
-}
+//Context
+import { PropsContext } from '../templates/ApiUpdate';
+// Helpers
+import { IsContextTypes } from '../helpers/interfaces';
 
 export const LoadingCircle = () => {
-  const { loading, page } = useContext<LoadingTypes>(PropsContext);
+  const { loading, page } = useContext<IsContextTypes>(PropsContext);
 
   return loading ? (
     <div

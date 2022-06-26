@@ -1,7 +1,10 @@
 import React from 'react';
+//Bootstrap components
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../../ricklogo.svg';
+//Molecules
 import { SearchbarInput } from '../molecules/SearchbarInput';
+//
+import logo from '../../ricklogo.svg';
 
 export const Nav = (props: { children?: JSX.Element | React.ReactNode }) => {
   return (

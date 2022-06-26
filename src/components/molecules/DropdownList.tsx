@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
+//Bootsrap components
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+//Context
 import { PropsContext } from '../templates/ApiUpdate';
+//HELPERS
 import { statusColor } from '../helpers/statusColor';
-
-type StatusOptionTypes = {
-  status: string;
-  id: number;
-};
+import { IsContextTypes } from '../helpers/interfaces';
+import { StatusOptionTypes } from '../helpers/types';
 
 const statusOptions: StatusOptionTypes[] = [
   { status: 'Any', id: 1 },
@@ -18,13 +18,21 @@ const statusOptions: StatusOptionTypes[] = [
 
 export const DropdownList = () => {
   const [characterStatus, setCharacterStatus] = useState<string>('Any');
-  const { setStatus, setPage, setCharacters } = useContext<any>(PropsContext);
+  const { setStatus, setPage, setCharacters } =
+    useContext<IsContextTypes>(PropsContext);
 
-  function handleOnClick(e: any) {
-    setCharacterStatus(e.target.textContent);
-    setCharacters([]);
-    setStatus(e.target.textContent === 'Any' ? '' : e.target.textContent);
-    setPage(1);
+  function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
+    const input = e.target as HTMLElement;
+
+    if (setCharacters && setStatus && setPage) {
+      if (input.textContent !== null) {
+        console.log(typeof input.textContent);
+        setCharacterStatus(input.textContent);
+        setCharacters([]);
+        setStatus(input.textContent === 'Any' ? '' : input.textContent);
+      }
+      setPage(1);
+    }
   }
   return (
     <DropdownButton
