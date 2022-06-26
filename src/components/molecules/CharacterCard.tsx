@@ -24,10 +24,12 @@ export const CharacterCard = () => {
           xl={4}
           lg={4}
           md={6}
+          s
           sm={6}
           xs={12}
+          className="p-3"
         >
-          <Card bg="dark" text="light" className="mt-3 text-center">
+          <Card bg="dark" text="light" className="text-center">
             <Card.Img src={character.image} />
             <Card.Body>
               <Card.Title>{character.name}</Card.Title>

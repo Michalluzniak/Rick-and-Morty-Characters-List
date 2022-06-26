@@ -4,5 +4,5 @@ import Row from 'react-bootstrap/Row';
 import { atomsProps } from '../helpers/types';
 
 export const RowElement = ({ children }: atomsProps) => {
-  return <Row className="mt-5 p-5 justify-content-center">{children}</Row>;
+  return <Row className="mt-1">{children}</Row>;
 };

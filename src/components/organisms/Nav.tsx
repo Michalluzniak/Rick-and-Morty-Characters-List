@@ -2,7 +2,6 @@ import React from 'react';
 //Bootstrap components
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-
 //Molecules
 import { SearchbarInput } from '../molecules/SearchbarInput';
 //
@@ -10,21 +9,22 @@ import logo from '../../ricklogo.svg';
 
 export const Nav = () => {
   return (
-    <Navbar fixed="top" bg="dark" variant="dark">
+    <Navbar sticky="top" bg="dark" variant="dark">
       <Container fluid="xxl" className="d-flex flex-column flex-lg-row">
-        <Navbar.Brand className="none">
-          <a href="#" className="text-decoration-none text-light">
+        <Navbar.Brand className="">
+          <a
+            href="#id"
+            className="text-decoration-none text-light d-flex flex-column flex-lg-row align-items-center "
+          >
             <img
               src={logo}
-              width="50"
-              height="50"
-              className="ms-0 ms-lg-5 me-4 my-3 my-lg-0 "
+              className="ms-0  me-0 me-lg-4  mb-3 my-lg-0 w-50"
               alt="React Bootstrap logo"
             />
             Rick and Morty Characters List
           </a>
         </Navbar.Brand>
-        <SearchbarInput className="col-8 col-md-6 col-lg-3 me-0 me-lg-5 my-4 my-lg-0" />
+        <SearchbarInput className="col-10 col-md-6 col-lg-3 me-0  my-4 my-lg-0" />
       </Container>
     </Navbar>
   );
