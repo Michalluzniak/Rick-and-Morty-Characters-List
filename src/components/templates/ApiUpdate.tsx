@@ -26,14 +26,17 @@ export function ApiData({ children }: IsApiData) {
     setLoading(true);
 
     axios
-      .get('https://rickandmortyapi.com/api/character/', {
-        cancelToken: new axios.CancelToken((c) => (cancel = c)),
-        params: {
-          page: page,
-          name: name,
-          status: status
+      .get(
+        'https://deelay.me/1000/https://rickandmortyapi.com/api/character/',
+        {
+          cancelToken: new axios.CancelToken((c) => (cancel = c)),
+          params: {
+            page: page,
+            name: name,
+            status: status
+          }
         }
-      })
+      )
       .then((res) => {
         // When scrolling only
         if (page !== 1) {
