@@ -6,7 +6,7 @@ import { SearchbarInput } from '../molecules/SearchbarInput';
 //
 import logo from '../../ricklogo.svg';
 
-export const Nav = (props: { children?: JSX.Element | React.ReactNode }) => {
+export const Nav = () => {
   return (
     <Navbar
       fixed="top"
@@ -15,17 +15,18 @@ export const Nav = (props: { children?: JSX.Element | React.ReactNode }) => {
       className="row justify-content-md-between"
     >
       <Navbar.Brand className="col-2">
-        <img
-          src={logo}
-          width="50"
-          height="50"
-          className="ms-5 me-4 "
-          alt="React Bootstrap logo"
-        />
-        Rick and Morty Characters List
+        <a href="#" className="text-decoration-none text-light">
+          <img
+            src={logo}
+            width="50"
+            height="50"
+            className="ms-5 me-4 "
+            alt="React Bootstrap logo"
+          />
+          Rick and Morty Characters List
+        </a>
       </Navbar.Brand>
-      {props.children}
-      <SearchbarInput />
+      <SearchbarInput className="col-2 me-5" />
     </Navbar>
   );
 };

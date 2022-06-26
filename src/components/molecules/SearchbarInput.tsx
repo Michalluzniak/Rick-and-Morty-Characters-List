@@ -7,7 +7,7 @@ import { DropdownList } from './DropdownList';
 //Context
 import { PropsContext } from '../templates/ApiUpdate';
 
-export const SearchbarInput = () => {
+export const SearchbarInput = (props: { className: string }) => {
   const { setName, setPage, setCharacters } = useContext<any>(PropsContext);
 
   const handleOnchange = (e: any) => {
@@ -18,7 +18,7 @@ export const SearchbarInput = () => {
   };
 
   return (
-    <SearchBarContainer className="col-2 me-5">
+    <SearchBarContainer className={props.className}>
       <DropdownList />
       <FormControl onChange={handleOnchange} />
     </SearchBarContainer>
