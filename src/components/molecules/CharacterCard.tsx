@@ -1,19 +1,22 @@
 import { useContext } from 'react';
+//Bootstrap components
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import { PropsContext } from '../templates/ApiUpdate';
 import Badge from 'react-bootstrap/Badge';
+//Helpers
 import { statusColor } from '../helpers/statusColor';
 import useInfinityScroll from '../helpers/useInfinityScroll';
+import { IsContextTypes } from '../helpers/interfaces';
+//Context
+import { PropsContext } from '../templates/ApiUpdate';
 
 export const CharacterCard = () => {
-  const { characters } = useContext<any>(PropsContext);
-
+  const { characters } = useContext<IsContextTypes>(PropsContext);
   const [observer] = useInfinityScroll();
 
   return (
     <>
-      {characters.map((character: any, i: number) => (
+      {characters?.map((character, i: number) => (
         <Col
           ref={characters.length === i + 1 ? observer : null}
           key={character.id}

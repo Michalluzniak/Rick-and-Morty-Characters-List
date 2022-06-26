@@ -1,14 +1,9 @@
 import { useRef, useContext, useCallback } from 'react';
 import { PropsContext } from '../templates/ApiUpdate';
-
-interface ScrollTypes {
-  setPage: (prev: React.SetStateAction<number>) => number;
-  loading: boolean;
-  isEnd: boolean;
-}
+import { IsContextTypes } from '../helpers/interfaces';
 
 const useInfinityScroll = () => {
-  const { setPage, loading, isEnd } = useContext<ScrollTypes>(PropsContext);
+  const { setPage, loading, isEnd } = useContext<IsContextTypes>(PropsContext);
 
   const observer = useRef<IntersectionObserver | null>();
 
@@ -20,7 +15,7 @@ const useInfinityScroll = () => {
 
       observer.current = new IntersectionObserver(
         (entries) => {
-          if (entries[0].isIntersecting) {
+          if (entries[0].isIntersecting && setPage) {
             setPage((prev: number) => prev + 1);
           }
         },

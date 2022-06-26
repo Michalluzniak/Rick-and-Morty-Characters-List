@@ -1,7 +1,10 @@
-import React, { useContext } from 'react';
-import { SearchBarContainer } from '../atoms/SearchBarContainer';
+import { useContext } from 'react';
+//Bootstrap components
 import FormControl from 'react-bootstrap/FormControl';
-import { DropdownList } from '../atoms/DropdownList';
+//Atoms
+import { SearchBarContainer } from '../atoms/SearchBarContainer';
+import { DropdownList } from './DropdownList';
+//Context
 import { PropsContext } from '../templates/ApiUpdate';
 
 export const SearchbarInput = () => {

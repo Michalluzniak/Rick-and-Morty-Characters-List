@@ -1,6 +1,7 @@
-import React from 'react';
+//Bootstrap components
 import InputGroup from 'react-bootstrap/InputGroup';
-import { atomsProps } from './types/types';
+//Helpers
+import { atomsProps } from '../helpers/types';
 
 export const SearchBarContainer = ({ className, children }: atomsProps) => (
   <div className={className}>

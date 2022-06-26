@@ -1,70 +1,50 @@
 import React, { useState, useEffect } from 'react';
+//Axios
 import axios from 'axios';
+//Helpers
+import { IsContextTypes } from '../helpers/interfaces';
+import { IsCharacter } from '../helpers/interfaces';
 
-interface ApiObj {
-  image: string;
-  id: number;
-}
-interface ApiProps {
+interface IsApiData {
   children?: React.ReactNode;
 }
 
-interface ContextTypes {
-  setName?: any;
-  setPage?: any;
-  setStatus?: any;
-  characters?: any;
-  setCharacters?: any;
-  loading?: any;
-  // isEmpty,
-  isEnd?: any;
-  page?: any;
-}
+export const PropsContext = React.createContext<IsContextTypes>({});
 
-export const PropsContext = React.createContext<ContextTypes>({});
-
-export function ApiData({ children }: ApiProps) {
+export function ApiData({ children }: IsApiData) {
   //API STATES for every component
-
-  const [characters, setCharacters] = useState<ApiObj[]>([]);
+  const [characters, setCharacters] = useState<IsCharacter[]>([]);
   const [page, setPage] = useState(1);
   const [name, setName] = useState('');
   const [status, setStatus] = useState('');
-
-  // const [isEmpty, setIsEmpty] = useState(true);
   const [loading, setLoading] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
-
-  // https://deelay.me/2000/
+  // const [isEmpty, setIsEmpty] = useState(true);
 
   useEffect(() => {
     let cancel: any;
     setLoading(true);
 
     axios
-      .get(
-        ' https://deelay.me/2000/https://rickandmortyapi.com/api/character/',
-        {
-          cancelToken: new axios.CancelToken((c) => (cancel = c)),
-          params: {
-            page: page,
-            name: name,
-            status: status
-          }
+      .get('https://rickandmortyapi.com/api/character/', {
+        cancelToken: new axios.CancelToken((c) => (cancel = c)),
+        params: {
+          page: page,
+          name: name,
+          status: status
         }
-      )
+      })
       .then((res) => {
+        // When scrolling only
         if (page !== 1) {
           setCharacters((prevResult) => [...prevResult, ...res.data.results]);
-          console.log(res.data);
           setLoading(false);
-        } else {
+        } // Default
+        else {
           setCharacters(res.data.results);
-          console.log(res.data);
-
-          setIsEnd(!res.data.info.next);
-
           setLoading(false);
+          //If next page doesn't exist
+          setIsEnd(!res.data.info.next);
         }
       })
       .catch((err) => {
@@ -72,6 +52,7 @@ export function ApiData({ children }: ApiProps) {
       });
 
     return () => {
+      //Cancel multiple requests
       cancel();
     };
   }, [name, page, status]);

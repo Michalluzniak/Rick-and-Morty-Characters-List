@@ -1,7 +1,7 @@
-import React from 'react';
+//Bootstrap components
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { atomsProps } from './types/types';
+//Helpers
+import { atomsProps } from '../helpers/types';
 
 export const ButtonCircle = ({
   className,

@@ -4,3 +4,8 @@ export type atomsProps = {
   children?: string | React.ReactNode;
   className?: string;
 };
+
+export type StatusOptionTypes = {
+  status: string;
+  id: number;
+};
