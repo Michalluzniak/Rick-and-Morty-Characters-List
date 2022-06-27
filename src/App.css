@@ -2,7 +2,7 @@
   background-color: #333 !important;
 }
 
-@media (orientation: landscape) and (max-width: 34rem) {
+/* @media (orientation: landscape) and (min-width: 24rem) and (max-width: 54rem) {
   .navbar {
     height: 20vh;
   }
@@ -38,11 +38,7 @@
     width: 50% !important;
   }
 
-  .col__element .character__card {
-    /* height: 30%; */
-  }
-
   .card-title {
     font-size: 12px !important;
   }
-} ;
+} ; */

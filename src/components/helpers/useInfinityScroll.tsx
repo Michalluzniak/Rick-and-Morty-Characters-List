@@ -19,7 +19,7 @@ const useInfinityScroll = () => {
             setPage((prev: number) => prev + 1);
           }
         },
-        { threshold: 0.8 }
+        { threshold: 0.6 }
       );
       if (node) observer.current.observe(node);
     },

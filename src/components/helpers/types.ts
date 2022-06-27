@@ -3,6 +3,7 @@ export type atomsProps = {
   type?: 'button' | 'submit' | 'reset' | undefined;
   children?: string | React.ReactNode;
   className?: string;
+  placeholder?: string;
 };
 
 export type StatusOptionTypes = {
