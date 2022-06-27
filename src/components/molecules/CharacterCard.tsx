@@ -21,18 +21,19 @@ export const CharacterCard = () => {
           ref={characters.length === i + 1 ? observer : null}
           key={character.id}
           xxl={3}
-          xl={4}
+          xl={3}
           lg={4}
-          md={6}
-          s
+          md={4}
           sm={6}
-          xs={12}
+          xs={window.innerWidth > window.innerHeight ? 6 : 12}
           className="p-3 col__element"
         >
           <Card bg="dark" text="light" className="text-center character__card">
             <Card.Img src={character.image} />
             <Card.Body>
-              <Card.Title>{character.name}</Card.Title>
+              <Card.Title className="responsive-text">
+                {character.name}
+              </Card.Title>
               <Badge bg={statusColor(character.status)} pill>
                 {character.status}
               </Badge>

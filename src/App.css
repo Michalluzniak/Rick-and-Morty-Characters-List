@@ -2,43 +2,32 @@
   background-color: #333 !important;
 }
 
-/* @media (orientation: landscape) and (min-width: 24rem) and (max-width: 54rem) {
-  .navbar {
-    height: 20vh;
+.responsive-text {
+  font-size: 0.8rem !important;
+}
+@media (min-width: 544px) {
+  .responsive-text {
+    font-size: 1rem !important ;
   }
+}
+@media (min-width: 992px) {
+  .responsive-text {
+    font-size: 1.2rem !important;
+  }
+}
 
-  .navbar__container {
-    height: 100%;
+@media (min-width: 950px) {
+  .responsive-text {
+    font-size: 1.5rem;
   }
+}
 
-  .navbar__container span {
-    width: 100%;
-    margin: 0;
-  }
-
-  .navbar__anchor {
-    width: 100%;
-    height: 100%;
-  }
-
-  .navbar__anchor .navbar__logo {
-    height: 40px;
-    width: 40px !important;
-  }
-
-  .navbar__paragraph {
-    display: none;
-  }
-
-  .navbar__input {
-    display: none;
-  }
-
-  .col__element {
-    width: 50% !important;
-  }
-
-  .card-title {
-    font-size: 12px !important;
-  }
-} ; */
+button:focus,
+a:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.navbar-toggler:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

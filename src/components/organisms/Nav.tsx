@@ -1,4 +1,3 @@
-import React, { useRef, useState } from 'react';
 //Bootstrap components
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
