@@ -27,7 +27,7 @@ export function ApiData({ children }: IsApiData) {
 
     axios
       .get(
-        'https://rickandmortyapi.com/api/character/',
+        'https://rickandmortyapi.com/api/character',
         {
           cancelToken: new axios.CancelToken((c) => (cancel = c)),
           params: {
